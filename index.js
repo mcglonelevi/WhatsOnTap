@@ -11,16 +11,36 @@ let beverageState = {
 };
 
 app.get('/api', (req, res) => {
-    res.send(beverageState)
+    res.set('Content-Type', 'application/json');
+    res.send(beverageState);
 });
 
 app.post('/api', (req, res) => {
+    res.set('Content-Type', 'application/json');
     beverageState = req.body;
-    res.send(beverageState)
+    res.send(beverageState);
 });
 
-app.get('/api/slack', (req, res) => {
-    res.send(beverageState)
+app.post('/api/slack', (req, res) => {
+    res.set('Content-Type', 'application/json');
+    res.send({
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "We have kombucha!"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "We have cold brew!"
+                }
+            }
+        ]
+    });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
