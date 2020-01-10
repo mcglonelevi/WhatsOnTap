@@ -6,16 +6,8 @@ const port = 3000;
 app.use(bodyParser.json());
 
 let beverageState = {
-    kombucha: 0,
-    coldBrew: 0,
-};
-
-const levelString = {
-    0: 'empty',
-    1: 'almost gone',
-    2: 'halfway full',
-    3: 'plenty left',
-    4: 'full'
+    kombucha: false,
+    coldBrew: false,
 };
 
 app.get('/api', (req, res) => {
@@ -37,14 +29,14 @@ app.post('/api/slack', (req, res) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `The kombucha is ${levelString[beverageState.kombucha]}!`,
+                    "text": beverageState.kombucha? `There is kombucha :)` : 'The kombucha is out :(',
                 },
             },
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `The Cold Brew is ${levelString[beverageState.coldBrew]}!`,
+                    "text": beverageState.coldBrew? 'There is cold brew :)': 'The cold brew is out :(',
                 }
             }
         ]
