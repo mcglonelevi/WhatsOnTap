@@ -36,7 +36,7 @@ app.post('/api/slack', (req, res) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": beverageState.coldBrew? 'There is cold brew :celebrate:': 'The cold brew is out :areyoukiddingme:',
+                    "text": beverageState.coldBrew? 'There is cold brew :celebrate:': 'The cold brew is out :sleepingparrot:',
                 }
             }
         ]
