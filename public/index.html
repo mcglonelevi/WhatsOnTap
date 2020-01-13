@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What's on tap? | Root Offices</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="flex column items-center justify-center full-height">
+    <div class="header p25 pt50 pb80">
+        <h1 class="text-shadow">What's on tap?</h1>
+        <span class="header-subtext">
+            <span class="text-shadow">Ever wish you knew if there was anything in the 5th floor kegs?</span>
+        </span>
+    </div>
+    <div class="container text-center">
+        <div>Use The Slack Command</div>
+        <div class="flex items-center">
+            <img class="slack-logo" src="/img/slack-logo.svg" alt="Slack Logo"/>
+            <div class="title-text text-shadow">/whatsontap</div>
+        </div>
+    </div>
+    <div class="flex items-end justify-around status-icons no-wrap pt100 text-center full-width">
+        <div class="coldBrew mr20">
+            <div class="icon spinning">
+                <img src="/img/coffee.svg" alt="coffee"/>
+            </div>
+            <div class="status">Checking cold brew levels...</div>
+        </div>
+        <div class="kombucha">
+            <div class="icon spinning">
+                <img src="/img/beer.svg" alt="kombucha"/>
+            </div>
+            <div class="status">Checking kombucha levels...</div>
+        </div>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+</body>
+</html>

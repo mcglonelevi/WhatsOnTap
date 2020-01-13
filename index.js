@@ -1,27 +1,34 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(express.static('public'))
 
 let beverageState = {
-    kombucha: false,
+    kombucha: true,
     coldBrew: false,
 };
 
-app.get('/api', (req, res) => {
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.get('/api', cors(corsOptions), (req, res) => {
     res.set('Content-Type', 'application/json');
     res.send(beverageState);
 });
 
-app.post('/api', (req, res) => {
+app.post('/api', cors(corsOptions), (req, res) => {
     res.set('Content-Type', 'application/json');
     beverageState = req.body;
     res.send(beverageState);
 });
 
-app.post('/api/slack', (req, res) => {
+app.post('/api/slack', cors(corsOptions), (req, res) => {
     res.set('Content-Type', 'application/json');
     res.send({
         "blocks": [
