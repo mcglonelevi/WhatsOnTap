@@ -1,4 +1,4 @@
-(() => {
+((document) => {
   const COLD_BREW = 'coldBrew'
   const KOMBUCHA = 'kombucha'
 
@@ -20,39 +20,36 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     fetch('http://whats-on-tap.nextwebtoday.com/api')
+      .catch(err => {
+        document.querySelectorAll('.status-icons .status').forEach(el => {
+          el.innerHTML = 'Sorry, something went wrong!'
+        })
+      })
       .then(response => {
-        const body = response.json()
-
-        console.log(body)
-
+        return response.json()
+      })
+      .then(body => {
         Object.keys(body).forEach(drink => {
           const status = body[drink]
           updateStatus(drink, status)
         })
       })
-      .catch(err => {
-        document.querySelectorAll('.status-icons .icon').forEach(el => {
-          el.classList.remove('spinning')
-        })
-        document.querySelectorAll('.status-icons .status').forEach(el => {
-          el.innerHTML = 'Sorry, something went wrong!'
-        })
-      })
+
   })
 
   function updateStatus (drink, status) {
     const selector = selectors[drink]
 
-    const container = document.querySelector('.status-icons ' + selector)
+    const container = document.querySelector('.status-icons .' + selector)
     const icon = container.querySelector('.icon')
     const status_el = container.querySelector('.status')
 
     // stop spinning the icon
-    icon.classList.remove('spinning')
+    icon.classList.add('spinning')
 
     // update the text on screen
     const text_on_off = status ? 'on' : 'off'
     status_el.innerHTML = text[drink][text_on_off]
   }
 
-})()
+})(document)
