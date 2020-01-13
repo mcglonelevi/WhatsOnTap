@@ -36,14 +36,14 @@ app.post('/api/slack', cors(corsOptions), (req, res) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": beverageState.kombucha? `There is kombucha :)` : 'The kombucha is out :(',
+                    "text": beverageState.kombucha? `There is kombucha :beerparrot:` : 'The kombucha is out :areyoukiddingme:',
                 },
             },
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": beverageState.coldBrew? 'There is cold brew :)': 'The cold brew is out :(',
+                    "text": beverageState.coldBrew? 'There is cold brew :celebrate:': 'The cold brew is out :sleepingparrot:',
                 }
             }
         ]
