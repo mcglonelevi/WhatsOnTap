@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 
 let beverageState = {
-    kombucha: true,
+    kombucha: false,
     coldBrew: false,
 };
 
