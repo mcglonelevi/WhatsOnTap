@@ -50,7 +50,7 @@ app.post('/api/slack', cors(corsOptions), (req, res) => {
         'type': 'section',
         'text': {
           'type': 'mrkdwn',
-          'text': '[Learn more](http://whats-on-tap.nextwebtoday.com)'
+          'text': 'http://whats-on-tap.nextwebtoday.com'
         }
       }
     ]
